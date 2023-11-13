@@ -1,0 +1,24 @@
+{% extends 'dashboard.html' %}
+
+{% block content_algoritmo %}
+<div class="accordion" id="acordeon">
+    {% for lista, nombre_algoritmo in ejecuciones %}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="item-{{ forloop.counter }}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ forloop.counter }}" aria-expanded="true" aria-controls="collapse-{{ forloop.counter }}">
+                    {{ nombre_algoritmo }}
+                </button>
+            </h2>
+            <div id="collapse-{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="item-1" data-bs-parent="#acordeon">
+                {% for algoritmo in lista %}
+                    <div class="accordion-body">
+                        <p>Cantidad de nodos: {{ algoritmo.nodos }}</p>
+                        <p><strong>Tiempo de ejecución:</strong> {{ algoritmo.tiempo_ejecucion }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+    <img src="data:image/png;base64,{{ grafica_tiempos }}" alt="Gráfico de Barras">
+</div>
+{% endblock %}

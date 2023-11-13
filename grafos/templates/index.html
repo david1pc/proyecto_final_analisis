@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+{% include 'navbar.html' %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Bienvenido a nuestro sitio de Pruebas de Algoritmos de Camino Más Corto</h1>
+            <p>Explora y prueba diferentes algoritmos para encontrar el camino más corto en grafos. Nuestra plataforma te permite visualizar y analizar los resultados de manera interactiva.</p>
+            <p>Aquí puedes:</p>
+            <ul>
+                <li>Probar algoritmos como Dijkstra, Bellman-Ford, A*, etc.</li>
+                <li>Visualizar grafos y sus conexiones de manera intuitiva.</li>
+                <li>Analizar el rendimiento y comparar diferentes algoritmos.</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'img/nodos.png' %}" class="img-fluid" alt="Nodos">
+        </div>
+    </div>
+
+    <h2 class="mt-5">Cómo Funciona</h2>
+    <p>Simplemente selecciona un grafo de nuestra colección o crea el tuyo propio. Luego elige un nodo de inicio y un nodo de destino. Nuestro sistema calculará el camino más corto utilizando el algoritmo que elijas y te mostrará el resultado de manera clara y concisa.</p>
+
+    <h2 class="mt-5">Empezar</h2>
+    <p>¡Empieza ahora mismo y descubre las maravillas de los algoritmos de camino más corto!</p>
+    <a href="/registro/" class="btn btn-primary">Registrarse</a>
+    <a href="/login/" class="btn btn-secondary">Iniciar Sesión</a>
+</div>
+{% endblock %}
