@@ -33,7 +33,7 @@ def prim_algorithm(graph):
 
 def ejecutar(matrices_adyacencias):
     ejecuciones = []
-    for matriz_adyacencias, nodos in matrices_adyacencias:
+    for matriz_adyacencias, nodos, num_aristas in matrices_adyacencias:
         inicio = time.time()
 
         # Obtener el árbol de expansión mínima
@@ -45,7 +45,7 @@ def ejecutar(matrices_adyacencias):
         matriz_adyacencias = matriz_adyacencias.tolist()
         distancias = distancias.tolist()
 
-        algoritmo = Algoritmo("prim", tiempo_ejecucion, nodos, matriz_adyacencias, distancias)
+        algoritmo = Algoritmo("prim", tiempo_ejecucion, nodos, matriz_adyacencias, distancias, num_aristas)
 
         ejecuciones.append(algoritmo)
     return ejecuciones, 'Prim'

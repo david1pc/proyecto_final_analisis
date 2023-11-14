@@ -13,6 +13,7 @@
                 {% for algoritmo in lista %}
                     <div class="accordion-body">
                         <p>Cantidad de nodos: {{ algoritmo.nodos }}</p>
+                        <p>Cantidad de aristas: {{ algoritmo.aristas }}</p>
                         <p><strong>Tiempo de ejecución:</strong> {{ algoritmo.tiempo_ejecucion }}</p>
                     </div>
                 {% endfor %}

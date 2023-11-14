@@ -7,6 +7,7 @@ class Grafo(models.Model):
     nombre = models.CharField(max_length=255)
     tiempo_ejecucion = models.FloatField()
     nodos = models.IntegerField()
+    aristas = models.IntegerField(null=True, blank=True)
     matriz_adyacencias = models.TextField()
     distancias = models.TextField()
     grafo_imagen_b64 = models.TextField(null=True, blank=True)

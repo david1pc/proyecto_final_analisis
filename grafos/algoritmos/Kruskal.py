@@ -75,7 +75,7 @@ def dijkstra_priority_queue(graph, start):
 def ejecutar(cantidades_nodos):
     ejecuciones = []
 
-    for matriz_adyacencias, nodos in cantidades_nodos:
+    for matriz_adyacencias, nodos, num_aristas in cantidades_nodos:
         inicio = time.time()
         # Ejecución del algoritmo de Kruskal
         arbol_expansion_minima = kruskal(matriz_adyacencias)
@@ -84,6 +84,6 @@ def ejecutar(cantidades_nodos):
 
         # Convertir el resultado a listas para almacenarlo en Algoritmo
         arbol_expansion_minima = arbol_expansion_minima.tolist()
-        algoritmo = Algoritmo("kruskal", tiempo_ejecucion, nodos, matriz_adyacencias.tolist(), arbol_expansion_minima)
+        algoritmo = Algoritmo("kruskal", tiempo_ejecucion, nodos, matriz_adyacencias.tolist(), arbol_expansion_minima, num_aristas)
         ejecuciones.append(algoritmo)
     return ejecuciones, 'kruskal'

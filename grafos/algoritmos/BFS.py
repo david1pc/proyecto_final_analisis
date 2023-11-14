@@ -31,7 +31,7 @@ def bfs(graph, start):
 def ejecutar(cantidades_nodos):
     ejecuciones = []
 
-    for matriz_adyacencias, nodos in cantidades_nodos:
+    for matriz_adyacencias, nodos, num_aristas in cantidades_nodos:
         inicio = time.time()
         # Nodo de inicio
         start_node = 0
@@ -42,7 +42,7 @@ def ejecutar(cantidades_nodos):
         fin = time.time()
         tiempo_ejecucion = fin - inicio
 
-        algoritmo = Algoritmo("BFS", tiempo_ejecucion, nodos, matriz_adyacencias, distancias)
+        algoritmo = Algoritmo("BFS", tiempo_ejecucion, nodos, matriz_adyacencias, distancias, num_aristas)
         ejecuciones.append(algoritmo)
 
     return ejecuciones, 'BFS'

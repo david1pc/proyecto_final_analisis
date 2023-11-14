@@ -32,7 +32,7 @@ class Grafo:
 
 def ejecutar(cantidades_nodos):
     ejecuciones = []
-    for matriz_adyacencias, nodos in cantidades_nodos:
+    for matriz_adyacencias, nodos, num_aristas in cantidades_nodos:
         inicio = time.time()
         grafo = Grafo(nodos, matriz_adyacencias)
 
@@ -42,7 +42,7 @@ def ejecutar(cantidades_nodos):
         fin = time.time()
         tiempo_ejecucion = fin - inicio
 
-        algoritmo = Algoritmo("Dijkstra CP", tiempo_ejecucion, nodos, grafo.matriz_adyacencias, distancias)
+        algoritmo = Algoritmo("Dijkstra Priority Queue", tiempo_ejecucion, nodos, grafo.matriz_adyacencias, distancias, num_aristas)
         ejecuciones.append(algoritmo)
 
-    return ejecuciones, 'Dijkstra CP'
+    return ejecuciones, 'Dijkstra PQ'

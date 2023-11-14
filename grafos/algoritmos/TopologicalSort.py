@@ -33,7 +33,7 @@ def topological_sort(graph):
 
 def ejecutar(matrices_adyacencias):
     ejecuciones = []
-    for matriz_adyacencias, nodos in matrices_adyacencias:
+    for matriz_adyacencias, nodos, num_aristas in matrices_adyacencias:
         inicio = time.time()
         # Ejecución del algoritmo de orden topológico
         orden_topologico = topological_sort(matriz_adyacencias)
@@ -44,7 +44,7 @@ def ejecutar(matrices_adyacencias):
         matriz_adyacencias = matriz_adyacencias.tolist()
         orden_topologico = np.array(orden_topologico).tolist()
 
-        algoritmo = Algoritmo("Topological Sort", tiempo_ejecucion, nodos, matriz_adyacencias, orden_topologico)
+        algoritmo = Algoritmo("Topological Sort", tiempo_ejecucion, nodos, matriz_adyacencias, orden_topologico, num_aristas)
 
         ejecuciones.append(algoritmo)
     return ejecuciones, 'Topological Sort'

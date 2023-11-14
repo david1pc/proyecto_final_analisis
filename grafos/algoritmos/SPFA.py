@@ -34,7 +34,7 @@ def spfa(graph, start):
 
 def ejecutar(matrices_adyacencias):
     ejecuciones = []
-    for matriz_adyacencias, nodos in matrices_adyacencias:
+    for matriz_adyacencias, nodos, num_aristas in matrices_adyacencias:
         inicio = time.time()
         # Nodo de inicio
         start_node = 0
@@ -47,7 +47,7 @@ def ejecutar(matrices_adyacencias):
         matriz_adyacencias = matriz_adyacencias.tolist()
         distancias = distancias.tolist()
 
-        algoritmo = Algoritmo("SPFA", tiempo_ejecucion, nodos, matriz_adyacencias, distancias)
+        algoritmo = Algoritmo("SPFA", tiempo_ejecucion, nodos, matriz_adyacencias, distancias, num_aristas)
 
         ejecuciones.append(algoritmo)
     return ejecuciones, 'SPFA'

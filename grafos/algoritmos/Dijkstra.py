@@ -28,7 +28,7 @@ def dijkstra(graph, start):
 
 def ejecutar(matrices_adyacencias):
     ejecuciones = []
-    for matriz_adyacencias, nodos in matrices_adyacencias:
+    for matriz_adyacencias, nodos, num_aristas in matrices_adyacencias:
         inicio = time.time()
 
         # Nodo de inicio
@@ -44,7 +44,7 @@ def ejecutar(matrices_adyacencias):
         distancias = distancias.tolist()
 
         # imagen_grafo_b64 = obtener_imagen_grafo(matriz_adyacencias)
-        algoritmo = Algoritmo("dijkstra", tiempo_ejecucion, nodos, matriz_adyacencias, distancias)
+        algoritmo = Algoritmo("dijkstra", tiempo_ejecucion, nodos, matriz_adyacencias, distancias, num_aristas)
 
         ejecuciones.append(algoritmo)
     return ejecuciones, 'Dijkstra'

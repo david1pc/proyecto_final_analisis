@@ -16,7 +16,7 @@ def dfs(graph, start, visited):
 
 def ejecutar(cantidades_nodos):
     ejecuciones = []
-    for matriz_adyacencias, nodos in cantidades_nodos:
+    for matriz_adyacencias, nodos, num_aristas in cantidades_nodos:
         inicio = time.time()
         # Nodo de inicio
         start_node = 0
@@ -31,7 +31,7 @@ def ejecutar(cantidades_nodos):
         matriz_adyacencias = matriz_adyacencias.tolist()
         distancias = visited.tolist()
 
-        algoritmo = Algoritmo("dfs", tiempo_ejecucion, nodos, matriz_adyacencias, distancias)
+        algoritmo = Algoritmo("dfs", tiempo_ejecucion, nodos, matriz_adyacencias, distancias, num_aristas)
 
         ejecuciones.append(algoritmo)
     return ejecuciones, 'DFS'

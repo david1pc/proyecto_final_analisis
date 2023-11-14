@@ -20,7 +20,7 @@ def floyd_warshall(graph):
 def ejecutar(cantidades_nodos):
     ejecuciones = []
 
-    for matriz_adyacencias, nodos in cantidades_nodos:
+    for matriz_adyacencias, nodos, num_aristas in cantidades_nodos:
         inicio = time.time()
 
         # Ejecución del algoritmo de Floyd-Warshall
@@ -29,7 +29,7 @@ def ejecutar(cantidades_nodos):
         fin = time.time()
         tiempo_ejecucion = fin - inicio
 
-        algoritmo = Algoritmo("Floyd-Warshall", tiempo_ejecucion, nodos, matriz_adyacencias, distancias)
+        algoritmo = Algoritmo("Floyd-Warshall", tiempo_ejecucion, nodos, matriz_adyacencias, distancias, num_aristas)
         ejecuciones.append(algoritmo)
 
     return ejecuciones, 'Floyd-Warshall'

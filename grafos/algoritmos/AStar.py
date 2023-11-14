@@ -47,7 +47,7 @@ def astar(graph, start, goal, came_from):
 def ejecutar(cantidades_nodos):
     ejecuciones = []
 
-    for matriz_adyacencias, nodos in cantidades_nodos:
+    for matriz_adyacencias, nodos, num_aristas in cantidades_nodos:
         inicio = time.time()
 
         # Nodo de inicio y nodo objetivo
@@ -63,6 +63,6 @@ def ejecutar(cantidades_nodos):
         fin = time.time()
         tiempo_ejecucion = fin - inicio
 
-        algoritmo = Algoritmo("A*", tiempo_ejecucion, nodos, matriz_adyacencias, camino)
+        algoritmo = Algoritmo("A*", tiempo_ejecucion, nodos, matriz_adyacencias, camino, num_aristas)
         ejecuciones.append(algoritmo)
     return ejecuciones, 'A*'

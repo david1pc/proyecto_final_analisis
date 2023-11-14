@@ -33,14 +33,14 @@ def primMST(graph):
 
     return graph
 
-# Driver's code
+
 def ejecutar(matrices_adyacencias):
     ejecuciones = []
-    for matriz_adyacencias, nodos in matrices_adyacencias:
+    for matriz_adyacencias, nodos, num_aristas in matrices_adyacencias:
         inicio = time.time()
         distancias = primMST(matriz_adyacencias)
         fin = time.time()
         tiempo_ejecucion = fin - inicio
-        algoritmo = Algoritmo("Prim MST", tiempo_ejecucion, nodos, matriz_adyacencias, distancias)
+        algoritmo = Algoritmo("Prim MST", tiempo_ejecucion, nodos, matriz_adyacencias, distancias, num_aristas)
         ejecuciones.append(algoritmo)
     return ejecuciones, 'Prim MST'

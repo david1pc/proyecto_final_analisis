@@ -90,9 +90,7 @@ def ejecutar_algoritmos(request):
     except Exception:
         return ejecutar_algoritmos(request)
 
-    # Supongamos que tienes la instancia de Usuario actual
     usuario_actual = request.user
-    # Asociar el Algoritmo al Usuario actual
     fecha_creacion = timezone.now()
 
     tiempos_por_algoritmo = {}
@@ -117,7 +115,8 @@ def ejecutar_algoritmos(request):
     ax.set_ylabel('Tiempo total de ejecución (ms)')
     ax.set_title('Tiempo total de ejecución de algoritmos')
 
-    ax.tick_params(axis='x', labelsize=6)  # Rotar y ajustar el tamaño de las etiquetas
+    # Rotar y ajustar el tamaño de las etiquetas
+    ax.tick_params(axis='x', labelsize=6)
 
     # Convertir el gráfico a una imagen para mostrar en la plantilla
     img_data = BytesIO()
@@ -132,18 +131,17 @@ def ejecutar_algoritmos(request):
 
     for algoritmos, nombre_algoritmo in ejecuciones:
         for algoritmo in algoritmos:
-            # 1. Crea y guarda el objeto Grafo
             grafo = Grafo(
                 nombre=algoritmo.nombre,
                 tiempo_ejecucion=algoritmo.tiempo_ejecucion,
                 nodos=algoritmo.nodos,
                 matriz_adyacencias=algoritmo.matriz_adyacencias,
                 distancias=algoritmo.distancias,
-                grafo_imagen_b64=None  # Puedes proporcionar la imagen si está disponible
+                aristas=algoritmo.aristas,
+                grafo_imagen_b64=None
             )
             grafo.save()
 
-            # 2. Crea el objeto UsuarioGrafo con referencia al objeto Grafo recién creado y luego guárdalo.
             usuario_grafo = UsuarioGrafo(usuario=usuario_actual, grafo=grafo, fecha_creacion=fecha_creacion, grafica_tiempos=img_base64)
             usuario_grafo.save()
 
@@ -152,9 +150,7 @@ def ejecutar_algoritmos(request):
 
 @login_required
 def ver_historial(request):
-    # Supongamos que tienes la instancia de Usuario actual
     usuario_actual = request.user
-    # Obtener todos los atributos del modelo Grafo asociados a un usuario y agruparlos por fecha de creación
     resultados = UsuarioGrafo.objects.filter(usuario=usuario_actual).values(
         'fecha_creacion',
         'grafo__nombre',
@@ -162,10 +158,10 @@ def ver_historial(request):
         'grafo__nodos',
         'grafo__matriz_adyacencias',
         'grafo__distancias',
+        'grafo__aristas',
         'grafo__grafo_imagen_b64',
         'grafica_tiempos'
     )
-    # Organizar los resultados en un diccionario agrupado por fecha de creación
     grafos_por_fecha = {}
     for resultado in resultados:
         fecha_creacion = resultado['fecha_creacion']
@@ -177,12 +173,12 @@ def ver_historial(request):
             'nodos': resultado['grafo__nodos'],
             'matriz_adyacencias': resultado['grafo__matriz_adyacencias'],
             'distancias': resultado['grafo__distancias'],
+            'aristas': resultado['grafo__aristas'],
             'grafo_imagen_b64': resultado['grafo__grafo_imagen_b64'],
             'grafica_tiempos': resultado['grafica_tiempos']
         }
         grafos_por_fecha[fecha_creacion].append(grafo_actual)
 
-    # Convertir el diccionario en una lista de listas
     lista_de_listas = [[fecha, grafos] for fecha, grafos in grafos_por_fecha.items()]
 
     return render(request, 'historial.html', {'resultados': lista_de_listas})

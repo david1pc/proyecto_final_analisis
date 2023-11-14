@@ -49,8 +49,8 @@ def ejecutar_algoritmo(nombre, matrices_adyacencias):
 
 
 def obtener_matrices_adyacencias():
-# cantidades_nodos = [512, 1024, 2048, 3096]
-    cantidades_nodos = [50, 100, 150, 500]
+    # cantidades_nodos = [512, 1024, 2048, 3096]
+    cantidades_nodos = [50, 150, 250, 500]
     matrices_adyacencias = []
     for nodos in cantidades_nodos:
         # Generar un grafo aleatorio con n nodos y aristas con pesos aleatorios
@@ -59,9 +59,12 @@ def obtener_matrices_adyacencias():
         for edge in edges:
             # Pesos aleatorios entre 1 y 200
             random_graph[edge[0]][edge[1]]['weight'] = np.random.randint(1, 200)
+
+        # Contar el número de aristas
+        num_aristas = random_graph.number_of_edges()
         # Convertir el grafo a una matriz de adyacencia
         matriz_adyacencias = nx.to_numpy_array(random_graph)
-        matrices_adyacencias.append((matriz_adyacencias, nodos))
+        matrices_adyacencias.append((matriz_adyacencias, nodos, num_aristas))
     return matrices_adyacencias
 
 
